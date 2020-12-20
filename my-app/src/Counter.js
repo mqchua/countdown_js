@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from "react";
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import {useStyles} from './styles.js';
 
 function Counter() {
@@ -51,16 +52,29 @@ function Counter() {
     const daysRounded = minTwoDigits(days);
 
 
-    return (<div>
+    return (<div className={classes.root}>
+ 
+            <Grid className={classes.grid} container spacing={0} justify="center">
+                <Grid item xs={2} className={classes.timeBox}>
+                    {daysRounded} <br></br> Days 
+                </Grid>
 
-        <Grid className={classes.grid} container spacing={0} direction="row" justify="center">
-            <Grid item>
-                {daysRounded} days
+                <Grid item xs={2} className={classes.timeBox}>
+                    {hoursRounded} <br></br> Hours
+                </Grid>
+
+                <Grid item xs={2} className={classes.timeBox}>
+                    {minutesRounded} <br></br> Min
+                </Grid>
+
+                <Grid item xs={2} className={classes.timeBox}>
+                    {secondsRounded} <br></br> Sec
+                </Grid>
             </Grid>
 
             
-        </Grid>
-        {daysRounded}:{hoursRounded}:{minutesRounded}:{secondsRounded}
+    
+            {daysRounded}:{hoursRounded}:{minutesRounded}:{secondsRounded}
     </div>);
   }
 
