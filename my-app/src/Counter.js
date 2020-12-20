@@ -1,13 +1,12 @@
 import React, {useEffect, useState } from "react";
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import {useStyles} from './styles.js';
 
 function Counter() {
 
     const classes = useStyles();
 
-    const difference = +new Date(`${2021}-01-02`) - +new Date();
+    const difference = new Date(`${2021}-01-02`) - new Date();
 
     const [seconds, setSeconds] = useState(Math.floor((difference / 1000) % 60))
     const [minutes, setMinutes] = useState(Math.floor((difference / 1000 / 60) % 60))
@@ -19,7 +18,12 @@ function Counter() {
         
       }
       else {
-        if (minutes == 0 && seconds == 0) {
+        if (hours == 0 && minutes == 0 && seconds == 0) {
+            setDays(days => days - 1);
+            setHours(23)
+            setMinutes(59);
+            setSeconds(59);
+        } else if (minutes == 0 && seconds == 0) {
             setHours(hours => hours - 1);
             setMinutes(59);
             setSeconds(59);
@@ -33,9 +37,7 @@ function Counter() {
     }
 
     useEffect(() => {
-      // use set timeout and be confident because updateTime will cause rerender
-      // rerender mean re call this effect => then it will be similar to how setinterval works
-      // but with easy to understand logic
+
       const token = setTimeout(updateTime, 1000)
   
       return () => clearTimeout(token);
@@ -55,38 +57,35 @@ function Counter() {
     return (<div className={classes.root}>
  
             <Grid className={classes.grid} container spacing={0} justify="center">
-                <Grid item xs={2} className={classes.timeBox}>
-                    <div>
+                <Grid item className={classes.timeBox}>
+                    <div className={classes.timeNumber}>
                     {daysRounded} 
                     </div> 
-                    <span>Days</span> 
+                    <span className={classes.timeWords}>Days</span> 
                 </Grid>
 
-                <Grid item xs={2} className={classes.timeBox}>
-                    <div>
+                <Grid item className={classes.timeBox}>
+                    <div className={classes.timeNumber}>
                     {hoursRounded} 
                     </div> 
-                    <span>Days</span> 
+                    <span className={classes.timeWords}>Hours</span> 
                 </Grid>
 
-                <Grid item xs={2} className={classes.timeBox}>
-                    <div>
+                <Grid item className={classes.timeBox}>
+                    <div className={classes.timeNumber}>
                     {minutesRounded} 
                     </div> 
-                    <span>Days</span> 
+                    <span className={classes.timeWords}>Min</span> 
                 </Grid>
 
-                <Grid item xs={2} className={classes.timeBox}>
-                    <div>
+                <Grid item className={classes.timeBox}>
+                    <div className={classes.timeNumber}>
                     {secondsRounded} 
                     </div> 
-                    <span>Days</span> 
+                    <span className={classes.timeWords}>Sec</span> 
                 </Grid>
             </Grid>
-
-            
-    
-            {daysRounded}:{hoursRounded}:{minutesRounded}:{secondsRounded}
+        
     </div>);
   }
 

@@ -16,10 +16,21 @@ export const useStyles = makeStyles(theme => ({
         justifyContent:'center',
         padding:20,
         margin:20,
-        maxWidth:83.64,
+        minWidth:102.27,
+        maxWidth:102.27,
         alignItems:"center",
         alignContent:"center",
         textAlign: 'center',
         
     },
+    timeNumber: {
+        fontSize:28,
+        fontWeight:"bold",
+        paddingBottom:5,
+    },
+    timeWords: {
+        fontSize: 14,
+        // fontWeight:"bold",
+    }
+
 }));
