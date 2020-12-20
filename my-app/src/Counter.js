@@ -1,12 +1,17 @@
 import React, {useEffect, useState } from "react";
 import Grid from '@material-ui/core/Grid';
+import {useStyles} from './styles.js';
 
 function Counter() {
 
-    const [seconds, setSeconds] = useState(1)
-    const [minutes, setMinutes] = useState(1)
-    const [hours, setHours] = useState(1)
-    const [days, setDays] = useState(0)
+    const classes = useStyles();
+
+    const difference = +new Date(`${2021}-01-02`) - +new Date();
+
+    const [seconds, setSeconds] = useState(Math.floor((difference / 1000) % 60))
+    const [minutes, setMinutes] = useState(Math.floor((difference / 1000 / 60) % 60))
+    const [hours, setHours] = useState(Math.floor((difference / (1000 * 60 * 60)) % 24))
+    const [days, setDays] = useState(Math.floor(difference / (1000 * 60 * 60 * 24)))
   
     function updateTime() {
       if (hours == 0 && minutes == 0 && seconds == 0) {
@@ -48,10 +53,14 @@ function Counter() {
 
     return (<div>
 
-        <Grid container spacing={0} >
-            time: {hoursRounded}:{minutesRounded}:{secondsRounded}
-        </Grid>
+        <Grid className={classes.grid} container spacing={0} direction="row" justify="center">
+            <Grid item>
+                {daysRounded} days
+            </Grid>
 
+            
+        </Grid>
+        {daysRounded}:{hoursRounded}:{minutesRounded}:{secondsRounded}
     </div>);
   }
 
