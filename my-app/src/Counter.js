@@ -56,19 +56,31 @@ function Counter() {
  
             <Grid className={classes.grid} container spacing={0} justify="center">
                 <Grid item xs={2} className={classes.timeBox}>
-                    {daysRounded} <br></br> Days 
+                    <div>
+                    {daysRounded} 
+                    </div> 
+                    <span>Days</span> 
                 </Grid>
 
                 <Grid item xs={2} className={classes.timeBox}>
-                    {hoursRounded} <br></br> Hours
+                    <div>
+                    {hoursRounded} 
+                    </div> 
+                    <span>Days</span> 
                 </Grid>
 
                 <Grid item xs={2} className={classes.timeBox}>
-                    {minutesRounded} <br></br> Min
+                    <div>
+                    {minutesRounded} 
+                    </div> 
+                    <span>Days</span> 
                 </Grid>
 
                 <Grid item xs={2} className={classes.timeBox}>
-                    {secondsRounded} <br></br> Sec
+                    <div>
+                    {secondsRounded} 
+                    </div> 
+                    <span>Days</span> 
                 </Grid>
             </Grid>
 

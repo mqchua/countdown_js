@@ -11,11 +11,12 @@ export const useStyles = makeStyles(theme => ({
     timeBox: {
         backgroundColor:"#90caf9",
         color:"black",
-        borderColor:"#80deea",
+        borderColor:"#ffccbc",
         borderStyle:"solid",
         justifyContent:'center',
         padding:20,
         margin:20,
+        maxWidth:83.64,
         alignItems:"center",
         alignContent:"center",
         textAlign: 'center',
